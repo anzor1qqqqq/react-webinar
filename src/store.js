@@ -25,6 +25,9 @@ class Store {
    * @returns {Object}
    */
   getState() {
+    /* this.state = this.state.list.map((elem, i) => {
+      
+    }); */
     return this.state;
   }
 
@@ -44,7 +47,7 @@ class Store {
   addItem() {
     this.setState({
       ...this.state,
-      list: [...this.state.list, {code: this.state.list.length + 1, title: 'Новая запись'}]
+      list: [...this.state.list, {code: this.state.list[this.state.list.length-1].code + 1, title: 'Новая запись', counter: 0}]
     })
   };
 
@@ -64,16 +67,22 @@ class Store {
    * @param code
    */
   selectItem(code) {
+    let obj = this.state.list.map(elem => {
+      if (elem.selected) delete elem.selected;
+      return elem;
+    });
+
     this.setState({
       ...this.state,
-      list: this.state.list.map(item => {
+      list: obj.map(item => {
         if (item.code === code) {
           item.selected = !item.selected;
+          item.counter++;
         }
         return item;
       })
     })
-  }
+  };
 }
 
 export default Store;
