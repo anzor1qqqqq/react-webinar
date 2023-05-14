@@ -66,22 +66,24 @@ class Store {
    * Выделение записи по коду
    * @param code
    */
-  selectItem(code) {
-    let obj = this.state.list.map(elem => {
-      if (elem.selected) delete elem.selected;
-      return elem;
-    });
-
-    this.setState({
-      ...this.state,
-      list: obj.map(item => {
-        if (item.code === code) {
-          item.selected = !item.selected;
-          item.counter++;
-        }
-        return item;
+  selectItem(code, bool) {
+    if (!bool) {
+      let obj = this.state.list.map(elem => {
+        if (elem.selected) delete elem.selected;
+        return elem;
+      });
+  
+      this.setState({
+        ...this.state,
+        list: obj.map(item => {
+          if (item.code === code) {
+            item.selected = !item.selected;
+            item.counter++;
+          }
+          return item;
+        })
       })
-    })
+    }
   };
 }
 

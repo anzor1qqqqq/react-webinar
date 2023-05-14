@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import {createElement} from './utils.js';
 import './styles.css';
 
@@ -8,6 +8,7 @@ import './styles.css';
  * @returns {React.ReactElement}
  */
 function App({store}) {
+  const refSelected = useRef(false);
   const list = store.getState().list;
 
   return (
@@ -23,7 +24,9 @@ function App({store}) {
           list.map((item, i) =>
             <div key={item.code} className='List-item'>
               <div className={'Item' + (item.selected ? ' Item_selected' : '')}
-                   onClick={() => store.selectItem(item.code)}>
+                   onClick={event => {
+                    store.selectItem(item.code, event.target.closest('.Item_selected'))
+                   }}>
                 <div className='Item-code'>{item.code}</div>
                 <div className='Item-title'>{item.title} {item.counter === 0 ? '' : `| Выделяли ${item.counter} раз`}</div>
                 <div className='Item-actions'>
