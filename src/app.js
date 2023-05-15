@@ -16,7 +16,7 @@ function App({store}) {
         <h1>Приложение на чистом JS</h1>
       </div>
       <div className='App-controls'>
-        <button onClick={() => store.addItem()}>Добавить</button>
+        <button onClick={() => store.addItem(list.length)}>Добавить</button>
       </div>
       <div className='App-center'>
         <div className='List'>{
