@@ -83,6 +83,13 @@ class Store {
           return item;
         })
       })
+    } else {
+      const obj = this.state.list.map(elem => {
+        if (elem.selected) delete elem.selected;
+        return elem;
+      })
+
+      this.setState({list: obj});
     }
   };
 }
