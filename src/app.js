@@ -16,13 +16,6 @@ function App({store}) {
 
   const list = store.getState().list;
 
-  const callbacks = {
-   /*  onDeleteItem: useCallback((code) => {
-      store.deleteItem(code);
-    }, [store]) */
-    
-  };
-
   return (
     <Context.Provider value={{
       defaultContext,
@@ -30,7 +23,7 @@ function App({store}) {
     }}>
       <PageLayout>
         <Head title='Магазин'/>
-        <Controls onAdd={callbacks.onAddItem}/>
+        <Controls />
         <List list={list}/>
       </PageLayout>
     </Context.Provider>
