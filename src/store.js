@@ -38,6 +38,7 @@ class Store {
   setState(newState) {
     this.state = newState;
     // Вызываем всех слушателей
+    console.log(this.listeners);
     for (const listener of this.listeners) listener();
   }
 
