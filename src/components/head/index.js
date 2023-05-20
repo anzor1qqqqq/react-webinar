@@ -1,18 +1,24 @@
-import React, { forwardRef } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import './style.css';
 
-const Head = forwardRef(({title, close, modal}, ref) => {
+function Head({title, modal, callback}) {
   return (
     <div className={'Head' + (modal ? ' modal' : '')}>
       <h1>{title}</h1>
-      {close && <button className="btn_modal_close" onClick={() => ref.current.classList.remove('active')}>Закрыть</button>}
+      {modal && <button className="btn_modal_close" onClick={() => callback()}>Закрыть</button>}
     </div>
   )
-});
+};
 
 Head.propTypes = {
   title: PropTypes.node,
+  modal: PropTypes.bool,
+  callback: PropTypes.func,
 };
+
+Head.defaultProps = {
+  callback: () => {},
+}
 
 export default React.memo(Head);
