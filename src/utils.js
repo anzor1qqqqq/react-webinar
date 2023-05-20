@@ -23,7 +23,7 @@ export function constructIntl(...params) {
 
     return key.format(value);
   };
-}
+};
 
 /**
  * Генератор чисел с шагом 1

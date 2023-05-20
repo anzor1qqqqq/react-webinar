@@ -12,7 +12,9 @@ function Controls({callback, allPrice}) {
   
   return (
     <div className={bemClass()}>
-      <span className={bemClass('text')}>В корзине: <b>{defaultContext.length ? defaultContext.length + ` ${constructIntl({method: 'PluralRules', value: defaultContext.length, variants: {one: 'товар', few: 'товара', many: 'товаров'}})}` + ` / ${constructIntl({method: 'NumberFormat', value: allPrice})}` : 'пусто'}</b></span>
+      <span className={bemClass('text')}>В корзине: <b>{defaultContext.length 
+      ? defaultContext.length + ` ${constructIntl({method: 'PluralRules', value: defaultContext.length, variants: {one: 'товар', few: 'товара', many: 'товаров'}})}` + ` / ${constructIntl({method: 'NumberFormat', value: allPrice})}` 
+      : 'пусто'}</b></span>
       <button onClick={() => callback()}>Перейти</button>
     </div>
   )
