@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import './style.css';
 
 function Controls({callback, allPrice}) {
-  const { defaultContext, modifiedContext } = useContext(Context);
+  const { defaultContext } = useContext(Context);
 
   const bemClass = bem('Controls');
   
